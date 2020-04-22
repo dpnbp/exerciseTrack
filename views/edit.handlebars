@@ -1,0 +1,38 @@
+<h1>Exercise Log - Edit Exercise</h1>
+<form id="editExerciseForm">
+    <fieldset>
+        <legend>Modify exercise {{results.0.id}} ({{results.0.name}})</legend>
+        <span>Modify the below values as needed and press save to keep your changes and return to the log.</span>
+        <br>
+        <br>
+        <span id="newMsg"></span>
+        <br>
+        <br>
+        <!--name (str), reps (int), weight (int), date (mm-dd-yyyy), lbs (bool) -->
+        <input type="hidden" name="id" value={{results.0.id}}>
+        <label for="name">Name: </label>
+        <input type="text" name="name" value={{results.0.name}}>
+        <label for="reps">Reps: </label>
+        <input type="number" name="reps" value={{results.0.reps}}>
+        <label for="weight">Weight: </label>
+        <input type="number" name="weight" value={{results.0.weight}}>
+        <label for="date">Date: </label>
+        <input type="text" name="date" value={{results.0.date}}>
+        <br>
+        {{#if results.0.lbs}}
+        <label for="lbs">lbs: </label>
+        <input type="radio" name="lbs" value="1" checked="checked">
+        <label for="lbs">kgs: </label>
+        <input type="radio" name="lbs" value="0">
+        {{else}}
+        <label for="lbs">lbs: </label>
+        <input type="radio" name="lbs" value="1">
+        <label for="lbs">kgs: </label>
+        <input type="radio" name="lbs" value="0" checked="checked">
+        {{/if}}
+        <input type="submit" name="editSave" id="editSave" value="Save">
+    </fieldset>
+</form>
+
+
+<script src="/js/edit.js"></script>

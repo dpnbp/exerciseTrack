@@ -1,0 +1,58 @@
+<h1>Exercise Log</h1>
+<form id="newExerciseForm">
+    <fieldset>
+        <legend>Add Exercise to Log</legend>
+        <span>Fill out the following fields and press submit to create a new entry to your log.</span>
+        <br>
+        <br>
+        <span id="newMsg"></span>
+        <br>
+        <br>
+        <!--name (str), reps (int), weight (int), date (mm-dd-yyyy), lbs (bool) -->
+        <label for="name">Name: </label>
+        <input type="text" name="name">
+        <label for="reps">Reps: </label>
+        <input type="number" name="reps">
+        <label for="weight">Weight: </label>
+        <input type="number" name="weight">
+        <label for="date">Date: </label>
+        <input type="text" name="date">
+        <br>
+        <label for="lbs">lbs: </label>
+        <input type="radio" name="lbs" value="1" checked="checked">
+        <label for="lbs">kgs: </label>
+        <input type="radio" name="lbs" value="0">
+        <input type="submit" name="newSubmit" id="newSubmit">
+    </fieldset>
+</form>
+<br>
+<table id="exerciseLogTable">
+    <tbody id = "exerciseLogBody">
+    <tr>
+        <th>NAME</th>
+        <th>REPS</th>
+        <th>WEIGHT</th>
+        <th>DATE</th>
+        <th>LBS</th>
+    </tr>
+    {{#each results }}
+    <tr id="row_{{id}}"><form>
+        <td>{{name}}</td> 
+        <td>{{reps}}</td> 
+        <td>{{weight}}</td> 
+        <td>{{date}}</td> 
+        <td>{{lbs}}</td> 
+        <td><form>
+            <input type="hidden" name="deleteID" value={{id}}>
+            <button id="delete_{{id}}" class="deleteButton">Delete</button>
+        </form></td>
+        <td><form>
+            <input type="hidden" name="editID" value={{id}}>
+            <button id="edit_{{id}}" class="editButton">Edit</button>
+        </form></td>
+    </form></tr>
+    {{/each}}
+    </tbody>
+</table>
+
+<script src="/js/home.js"></script>
